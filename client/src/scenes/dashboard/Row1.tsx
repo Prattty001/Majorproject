@@ -21,7 +21,7 @@ import {
 const Row1 = () => {
   const { palette } = useTheme();
   const { data } = useGetKpisQuery();
-
+console.log("data is thssisisii " , data);
   const revenue = useMemo(() => {
     return (
       data &&
@@ -75,7 +75,7 @@ const Row1 = () => {
             data={revenueExpenses}
             margin={{
               top: 15,
-              right: 25,
+              right: 25,  
               left: -10,
               bottom: 60,
             }}

@@ -36,6 +36,18 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log(`Server is running on port ${PORT}`))
+  .then(async () => {
+    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
+    // Remove dropDatabase
+    // await mongoose.connection.db.dropDatabase();
+
+    // Only insert if the collection is empty
+    // if ((await KPI.countDocuments()) === 0) {
+    //   await KPI.insertMany(kpis);
+    // }
+  })
   .catch((error) => console.log(`${error} did not connect`));
+  // .then(() => console.log(`Server is running on port ${PORT}`))
+  // .catch((error) => console.log(`${error} did not connect`));
 
