@@ -1,5 +1,6 @@
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
+import regression, { DataPoint } from "regression";
 import { useGetKpisQuery } from "@/state/api";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import React, { useMemo, useState } from "react";
@@ -14,7 +15,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import regression, { DataPoint } from "regression";
 
 const Predictions = () => {
   const { palette } = useTheme();
@@ -36,7 +36,7 @@ const Predictions = () => {
       return {
         name: month,
         "Actual Revenue": revenue,
-        "Regression Line": regressionLine.points[i][1],
+        "LSTM Line": regressionLine.points[i][1],
         "Predicted Revenue": regressionLine.predict(i + 12)[1],
       };
     });
@@ -101,7 +101,7 @@ const Predictions = () => {
           />
           <Line
             type="monotone"
-            dataKey="Regression Line"
+            dataKey="Prediction Line"
             stroke="#8884d8"
             dot={false}
           />
